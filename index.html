@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log('*************** PETSHOP DA RD ***************')
+
+        const cachorro = {
+            nome: 'Colega',
+            idade: 'Vira-Lata',
+            raca: 8,
+            peso: 10.4,
+            cor: 'Marrom',
+            dono: 'Godofredo',
+            vacinado: false,
+            servicos: ['Banho', 'Tosa']
+        }
+
+        const vacinarCachorro = (cachorro) => {
+            if (cachorro !== null && cachorro.vacinado === false) {
+                cachorro.vacinado = true
+                console.log('Hora de vacinar o seu cãozinho')
+            } else {
+                console.log('Parabéns, seu cãozinho está vacinado!')
+            }
+        }
+    </script>
+</body>
+
+</html>
