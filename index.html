@@ -5,32 +5,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>PET SHOP RD</title>
 </head>
 
 <body>
     <script>
-        console.log('*************** PETSHOP DA RD ***************')
+        const EMPRESA = '*************** PETSHOP DA RD ***************'
+        console.log(EMPRESA)
 
-        const cachorro = {
-            nome: 'Colega',
-            idade: 'Vira-Lata',
-            raca: 8,
-            peso: 10.4,
-            cor: 'Marrom',
-            dono: 'Godofredo',
-            vacinado: false,
-            servicos: ['Banho', 'Tosa']
-        }
+        const pets = [
+            {
+                nome: 'Colega',
+                idade: 'Vira-Lata',
+                raca: 8,
+                tipo: 'Cachorro',
+                peso: 10.4,
+                cor: 'Marrom',
+                dono: 'Godofredo',
+                vacinado: false,
+                servicos: ['Banho', 'Tosa']
+            }
+        ]
 
-        const vacinarCachorro = (cachorro) => {
-            if (cachorro !== null && cachorro.vacinado === false) {
-                cachorro.vacinado = true
-                console.log('Hora de vacinar o seu cãozinho')
+        const vacinarPet = (pet) => {
+            if (pet !== null && !pets.vacinado) {
+                pets.vacinado = true
+                console.log('Hora de vacinar o seu pet')
             } else {
-                console.log('Parabéns, seu cãozinho está vacinado!')
+                console.log('Parabéns, seu pet está vacinado!')
             }
         }
+        // vacinarCachorro(pets)
+
+        const adicionarPet = (nome, idade, raca, tipo, cor, vacinado, servicos) => {
+            const petNovo = {
+                nome: nome,
+                idade: idade,
+                raca: raca,
+                tipo: tipo,
+                cor: cor,
+                dono: {
+                    nome: undefined,
+                    idade: undefined
+                },
+                vacinado: vacinado,
+                servicos: servicos
+            }
+            pets.push(petNovo)
+            console.log("Pet adicionado com sucesso!")
+        }
+
+        adicionarPet('Felix the Cat', 5, 'Vira-Lata', 'Gato', 'Preto', true, ['Banho', 'Tosa'])
+        adicionarPet('Garfield', 6, 'Vira-Lata', 'Gato', 'Amarelo', false, ['Banho', 'Tosa', 'Spa'])
+        adicionarPet('Snoopy', 9, 'Beagle', 'Cachorro', 'Branco', true, ['Banho', 'Tosa', 'Vacinação'])
+        adicionarPet('Bibo', 10, 'Beagle', 'Cachorro', 'Branco', false, ['Tosa', 'Banho'])
+
+        const exibirPets = () => {
+            console.log('------ Lista Completa ------')
+            pets.forEach((pet) => {
+                console.log('----------------------------')
+                console.log(`Nome do Pet: ${pet.nome}`)
+                console.log(`Idade do Pet: ${pet.idade}`)
+                console.log(`Raça do Pet: ${pet.raca}`)
+                console.log(`Tipo do Pet: ${pet.tipo}`)
+                console.log(`Cor do Pet: ${pet.cor}`)
+                console.log(pet.vacinado ? "Parabéns! Seu pet está vacinado!" : "Cuidado! Seu pet não está vacinado!")
+                console.log(`Serviços para o Pet: ${pet.servicos}
+                `)
+            })
+        }
+
+
+        // sem filter
+        const filtrarPetsGatos = () => {
+            let petsTipoGato = []
+            pets.forEach((pet, index) => {
+                if (pet.tipo === 'Gato') {
+                    petsTipoGato.push(pet)
+                }
+            })
+            return petsTipoGato
+        }
+
+        // com filter
+        const filtrarPetsGatosComFilter = () => {
+            let listaPetsTipoGato = pets.filter((pet, index) => {
+                return pet.tipo == 'Gato'
+            })
+            return listaPetsTipoGato
+        }
+
+        // com map
+        const aplicandoVacinas = () => {
+            return pets.map((pet) => {
+                pet.vacinado = true
+                return pet
+            })
+        }
+
+        const aplicandoVacinas2 = () => pets.map((pet) => {
+            pet.vacinado = true
+            return pet
+        })
+
     </script>
 </body>
 
